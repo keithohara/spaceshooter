@@ -1,6 +1,19 @@
 ﻿// A variable that will contain our bullet prefab
 public var bullet : GameObject;
 public var speed: int = 2;
+public var tScore: UnityEngine.UI.Text;
+
+var score: int = 0;
+
+function incScore(){
+	score = score + 1;
+	tScore.text = "SCORE: " + score;
+}
+
+
+function Start(){
+	tScore.text = "Score: 0";
+}
 
 function Update() { 
     // Move the spaceship horizontally (no changes)
@@ -8,7 +21,7 @@ function Update() {
 
     r2d.velocity.x = Input.GetAxis("Horizontal")*speed;
 
-    if (Input.GetButtonDown("Fire1")) {
+    if (Input.GetButtonDown("Fire1") || Input.GetKeyDown("space")) {
         // Create a new bullet at “transform.position” 
         // Which is the current position of the ship
         // Quaternion.identity = add the bullet with no rotation

@@ -27,6 +27,11 @@ function OnTriggerEnter2D(obj) {
     print ("Collision happened");
     // If the enemy collided with a bullet
     if (name == "bottle_0(Clone)") {
+
+    	var player = GameObject.Find("baby");
+    	var script = player.GetComponent("spaceshipScript");
+    	script.incScore();
+
         // Destroy itself (the enemy) and the bullet
         Destroy(gameObject);
         Destroy(obj.gameObject);
